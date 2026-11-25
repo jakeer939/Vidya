@@ -13,6 +13,7 @@ import {
   Menu,
   X,
   Home,
+  FileText,
 } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 import { useProfile } from '../../hooks/useProfile';
@@ -161,6 +162,15 @@ export const Header = () => {
               >
                 <Home size={16} />
                 <span>Landing Page</span>
+              </Link>
+
+              <Link
+                to="/admin/materials"
+                onClick={() => setMenuOpen(false)}
+                className={styles.menuItem}
+              >
+                <FileText size={16} />
+                <span>Manage Study Materials</span>
               </Link>
 
               <div className={styles.menuDivider} />

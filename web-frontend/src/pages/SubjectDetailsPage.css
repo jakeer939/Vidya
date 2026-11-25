@@ -181,6 +181,29 @@
   margin-top: 20px;
   padding-top: 18px;
   border-top: 1px dashed var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.pdfLinkBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border-accent);
+  background: var(--white);
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 750;
+  transition: all 0.2s ease;
+}
+
+.pdfLinkBtn:hover {
+  background: var(--pale-peach);
+  transform: translateY(-2px);
 }
 
 .primaryBtn {

@@ -12,6 +12,7 @@ import {
   GraduationCap,
   Play,
   Sparkles,
+  FileText,
 } from 'lucide-react';
 import styles from './SubjectDetailsPage.css';
 
@@ -115,6 +116,13 @@ export const SubjectDetailsPage = () => {
                 <Play size={15} fill="currentColor" />
                 <span>Continue: Chapter {nextChapter.order} - {nextChapter.title}</span>
               </button>
+              <Link
+                to={`/courses/${classId}/${subject.id}/materials`}
+                className={styles.pdfLinkBtn}
+              >
+                <FileText size={15} />
+                <span>Study Materials (PDF)</span>
+              </Link>
             </div>
           )}
         </div>

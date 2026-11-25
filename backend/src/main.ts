@@ -8,9 +8,10 @@ import {
 } from "@nestjs/platform-fastify";
 import { AppModule } from "./app.module";
 import { HttpErrorFilter } from "./common/http-exception.filter";
-import { ensureUploadsDirs, UPLOADS_URL_PREFIX } from "./common/uploads";
+import { avatarsDir, ensureUploadsDirs, UPLOADS_URL_PREFIX } from "./common/uploads";
 import { setupApiDocs } from "./docs";
 import { loadRootEnv } from "./env";
+import { maxPdfBytes } from "./modules/study-materials/pdf-storage";
 
 loadRootEnv();
 
@@ -27,17 +28,27 @@ async function bootstrap() {
   app.enableCors({
     origin: true,
     methods: ["GET", "HEAD", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization", "Accept"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "Accept",
+      "Range",
+      "x-admin-token",
+    ],
   });
 
-  // Profile photos: multipart uploads (single image, <= 5 MB) + static /uploads/*.
+  // Multipart: avatars are capped in StudentsService; PDFs use MAX_PDF_SIZE_MB.
   // (Plugin typings resolve a second fastify copy, hence the casts.)
   await app.register(fastifyMultipart as never, {
-    limits: { fileSize: 5 * 1024 * 1024, files: 1 },
+    limits: { fileSize: Math.max(5 * 1024 * 1024, maxPdfBytes()), files: 1 },
   });
+
+  // Only avatars are publicly served. Study-material PDFs are streamed by the
+  // authenticated /api/.../view route, never from a static directory.
+  ensureUploadsDirs();
   await app.register(fastifyStatic as never, {
-    root: ensureUploadsDirs(),
-    prefix: `${UPLOADS_URL_PREFIX}/`,
+    root: avatarsDir(),
+    prefix: `${UPLOADS_URL_PREFIX}/avatars/`,
     decorateReply: false,
   });
 

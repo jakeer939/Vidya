@@ -14,7 +14,7 @@ Student learning platform: Expo student app + NestJS (Fastify) API on Postgres, 
 | `web-frontend/` | Student web application (React, Vite, CSS Modules) |
 | `backend/` | Unified NestJS 11 + Fastify 5 API and PostgreSQL database engine (`backend/db/`) |
 
-More: [docs/architecture.md](docs/architecture.md), [docs/tech-stack.md](docs/tech-stack.md), [docs/repo-structure.md](docs/repo-structure.md)
+More: [docs/architecture.md](docs/architecture.md), [docs/tech-stack.md](docs/tech-stack.md), [docs/repo-structure.md](docs/repo-structure.md), [docs/study-materials.md](docs/study-materials.md)
 
 ## Stack
 

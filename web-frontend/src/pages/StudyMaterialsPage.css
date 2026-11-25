@@ -1,0 +1,297 @@
+.page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 30px 26px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.backLink:hover {
+  color: var(--primary-dark);
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 26px;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(120deg, var(--pale-peach), var(--white));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+}
+
+.heroIcon {
+  width: 62px;
+  height: 62px;
+  flex: 0 0 62px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.title {
+  font-size: clamp(22px, 2.6vw, 29px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-top: 4px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 6px;
+  max-width: 620px;
+}
+
+.errorBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  background: var(--error-bg);
+  color: #8a2f2f;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.stateBox {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px dashed var(--border-secondary);
+  border-radius: var(--radius-xl);
+  background: var(--white);
+  color: var(--text-muted);
+  text-align: center;
+  font-size: 13px;
+}
+
+.stateBox strong {
+  color: var(--text-primary);
+  font-size: 17px;
+}
+
+.spin {
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.pdfIcon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-md);
+  background: var(--pale-peach);
+  color: var(--primary);
+}
+
+.pdfBadge {
+  padding: 4px 9px;
+  border-radius: var(--radius-full);
+  background: var(--error-bg);
+  color: #9d3b3b;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--text-primary);
+}
+
+.filename {
+  margin-top: 5px;
+  font-size: 11px;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 16px 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.primaryButton,
+.secondaryButton,
+.iconButton,
+.pageButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 9px 13px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 700;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.primaryButton {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.primaryButton:hover {
+  background: var(--primary-dark);
+}
+
+.secondaryButton {
+  border: 1px solid var(--border-secondary);
+  color: var(--text-secondary);
+  background: var(--white);
+}
+
+.secondaryButton:hover {
+  border-color: var(--border-accent);
+  color: var(--primary);
+}
+
+.iconButton {
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  background: var(--white);
+}
+
+.iconButton:hover {
+  color: var(--primary);
+  border-color: var(--border-accent);
+}
+
+.viewerWrap {
+  margin-top: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--surface-soft);
+}
+
+.viewer {
+  display: block;
+  width: 100%;
+  height: 460px;
+  border: none;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.pageButton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pageLabel {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 20px 14px 40px;
+  }
+
+  .hero {
+    padding: 20px;
+    align-items: flex-start;
+  }
+
+  .heroIcon {
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+  }
+
+  .viewer {
+    height: 360px;
+  }
+}

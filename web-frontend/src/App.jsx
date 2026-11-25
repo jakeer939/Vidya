@@ -14,6 +14,8 @@ import { BookmarksPage } from './pages/BookmarksPage';
 import { NotificationsPage } from './pages/NotificationsPage';
 import { SettingsPage } from './pages/SettingsPage';
 import { ContactPage } from './pages/ContactPage';
+import { AdminStudyMaterialsPage } from './pages/AdminStudyMaterialsPage';
+import { StudyMaterialsPage } from './pages/StudyMaterialsPage';
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -45,6 +47,9 @@ export default function App() {
           <Route path="/landing" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
 
+          {/* Admin PDF management (protected by ADMIN_TOKEN, not a student JWT) */}
+          <Route path="/admin/materials" element={<AdminStudyMaterialsPage />} />
+
           {/* Student Onboarding */}
           <Route
             path="/onboarding"
@@ -66,6 +71,7 @@ export default function App() {
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/courses" element={<CoursesPage />} />
             <Route path="/courses/:classId/:subjectId" element={<SubjectDetailsPage />} />
+            <Route path="/courses/:classId/:subjectId/materials" element={<StudyMaterialsPage />} />
             <Route path="/courses/:classId/:subjectId/:chapterId" element={<ChapterReaderPage />} />
             <Route path="/bookmarks" element={<BookmarksPage />} />
             <Route path="/profile" element={<ProfilePage />} />

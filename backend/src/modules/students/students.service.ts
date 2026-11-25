@@ -7,7 +7,7 @@ import {
   UnsupportedMediaTypeException,
 } from "@nestjs/common";
 import { createWriteStream } from "node:fs";
-import { open, readdir, rename, unlink } from "node:fs/promises";
+import { open, readdir, rename, stat, unlink } from "node:fs/promises";
 import { join } from "node:path";
 import type { Readable } from "node:stream";
 import { pipeline } from "node:stream/promises";
@@ -435,7 +435,10 @@ export class StudentsService {
     const tmpPath = join(avatarsDir(), `${safeId}.${Date.now()}.tmp`);
     try {
       await pipeline(upload.file, createWriteStream(tmpPath));
-      if (upload.file.truncated) {
+      // The global multipart limit now accommodates larger PDF uploads, so the
+      // avatar limit is enforced explicitly here.
+      const avatarSize = (await stat(tmpPath)).size;
+      if (upload.file.truncated || avatarSize > 5 * 1024 * 1024) {
         throw new PayloadTooLargeException({
           error: "Avatar image is too large (max 5 MB)",
         });
